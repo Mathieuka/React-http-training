@@ -16,6 +16,9 @@ const Blog = () => {
                 .then(response => {
                         setPosts(()=>response);
                 })
+                .catch(err => {
+                    console.log('[Blog.js] ',err);
+                })
               
     },[]);
 
@@ -28,7 +31,6 @@ const Blog = () => {
             <div>
                     <section className="Posts">
                         {posts.data ? posts.data.map((cv,idx) => {
-                            console.log(cv.body);
                             return <Post 
                                     clickHandler={postClickHandler} 
                                     title={cv.title} content={cv.body} 
